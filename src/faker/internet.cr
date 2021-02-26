@@ -46,7 +46,7 @@ module Faker
         return result[0...specifier.max]
       end
 
-      return name.scan(/\w+/).shuffle(Faker.rng).map(&.[0]).join(separators.sample(Faker.rng)).downcase if name
+      return name.scan(/\w+/).shuffle(Faker.rng).map(&.[0]).join(separators.sample(Faker.rng)).downcase if specifier.responds_to?(:scan)
       [
         ->{ Name.first_name.gsub(/\W/, "").downcase },
         ->{
